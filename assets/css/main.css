@@ -102,7 +102,8 @@ ul li, ol li {
 }
 
 .btn-common {
-  background-color: #0DAC67;
+  /*background-color: #0DAC67;*/
+  background-color: chocolate;
   position: relative;
   z-index: 1;
 }
@@ -243,7 +244,7 @@ a.back-to-top:hover, a.back-to-top:focus {
   position: relative;
   margin: 0 auto;
 }
-
+/* loading circle color */
 #loader-1:before, #loader-1:after {
   content: "";
   position: absolute;
@@ -253,7 +254,8 @@ a.back-to-top:hover, a.back-to-top:focus {
   height: 100%;
   border-radius: 100%;
   border: 7px solid transparent;
-  border-top-color: #0DAC67;
+  /*border-top-color: #0d67ac;*/
+  border-top-color: chocolate;
 }
 
 #loader-1:before {
