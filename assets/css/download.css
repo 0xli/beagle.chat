@@ -52,9 +52,10 @@
 }
 
 .android-download-btn {
-    width: 145px;
-    height: 36px;
-    background-image: url('../img/btn-android.png');
+    width: 160px;
+    height: 100%;
+    margin-top: 30px;
+    background-image: url('../img/IOSLOGO.png');
     background-size: cover;
     display: inline-block;
     overflow: hidden;
