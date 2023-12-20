@@ -14,6 +14,16 @@
     margin-right: 20px;
     justify-content: center;
 }
+.download-block-android {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 30px;
+    justify-content: center;
+}
 .download-text-block {
     /*height: 430px;*/
     display: flex;
@@ -26,6 +36,7 @@
 .ios-download-btn {
     width: 100px;
     height: 100%;
+    border-radius: 20px;
     background-image: url('../img/icon_appstore__ev0z770zyxoy_large_2x.png');
     /*background-image: url('../image/btn-ios.png');*/
     margin-top: 30px;
@@ -52,10 +63,11 @@
 }
 
 .android-download-btn {
-    width: 100px;
+    width: 90px;
     height: 100%;
     margin-top: 30px;
-    background-image: url('../img/IOSLOGOt.png');
+    border-radius: 20px;
+    background-image: url('../img/Beagle256b.png');
     background-size: contain;
     display: inline-block;
     overflow: hidden;
