@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beagle Chat Android Closed Test</title>
+  <meta name="description" content="Join the Beagle Chat Android closed test and help us bring an open crypto community app to Google Play." />
+  <link rel="icon" href="assets/img/Beagle256.png" sizes="150x150" />
+  <style>
+    :root {
+      --bg: #080b14;
+      --panel: rgba(255, 255, 255, 0.07);
+      --panel-strong: rgba(255, 255, 255, 0.11);
+      --text: #f5f7fb;
+      --muted: #a8b0c3;
+      --line: rgba(255, 255, 255, 0.14);
+      --brand: #7c5cff;
+      --brand-2: #31d6ff;
+      --ok: #7ef6b2;
+      --warn: #ffd166;
+      --shadow: 0 24px 90px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(49, 214, 255, 0.18), transparent 35%),
+        radial-gradient(circle at 90% 0%, rgba(124, 92, 255, 0.22), transparent 32%),
+        linear-gradient(180deg, #070914 0%, #0d1323 48%, #090d17 100%);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand img { width: 42px; height: 42px; border-radius: 12px; }
+    .brand span { font-size: 20px; }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
+      align-items: center;
+      padding: 64px 0 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 22px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 18px var(--ok);
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 0.94;
+      letter-spacing: -0.07em;
+      margin: 0 0 22px;
+    }
+
+    .lead {
+      font-size: clamp(18px, 2.4vw, 23px);
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0 0 30px;
+      max-width: 720px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      font-weight: 750;
+      box-shadow: none;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.28); }
+    .btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; border: none; box-shadow: 0 18px 50px rgba(49, 214, 255, 0.18); }
+    .btn-secondary { background: rgba(255,255,255,0.06); color: var(--text); }
+
+    .note { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.105), rgba(255,255,255,0.055));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .phone {
+      width: min(360px, 100%);
+      margin: 0 auto;
+      border-radius: 36px;
+      padding: 16px;
+      background: #101625;
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 0 25px 80px rgba(0,0,0,0.42);
+    }
+
+    .screen {
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(49,214,255,0.23), transparent 35%),
+        linear-gradient(180deg, #151c2e, #0d1322);
+      padding: 22px;
+      min-height: 500px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .screen-top { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+    .avatar { width: 36px; height: 36px; border-radius: 12px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); }
+    .screen-title { font-weight: 800; }
+    .screen-sub { color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+    .bubble {
+      margin: 12px 0;
+      padding: 12px 14px;
+      border-radius: 16px;
+      line-height: 1.45;
+      font-size: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .bubble.agent { background: rgba(255,255,255,0.08); }
+    .bubble.signal { background: rgba(126,246,178,0.11); border-color: rgba(126,246,178,0.24); }
+    .bubble.user { background: rgba(124,92,255,0.18); margin-left: 42px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 36px 0 22px;
+    }
+
+    .step {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .num {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(49,214,255,0.13);
+      color: #9deeff;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    h2 { font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.05em; margin: 0 0 14px; }
+    h3 { margin: 0 0 10px; font-size: 19px; }
+    p { color: var(--muted); line-height: 1.65; }
+
+    .section { padding: 44px 0; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+    }
+
+    .checklist li {
+      display: flex;
+      gap: 10px;
+      color: var(--muted);
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+
+    .checklist li::before { content: "✓"; color: var(--ok); font-weight: 900; }
+
+    .warning {
+      border-left: 3px solid var(--warn);
+      padding: 14px 16px;
+      background: rgba(255, 209, 102, 0.08);
+      border-radius: 14px;
+      color: #f5ddb0;
+      line-height: 1.55;
+      margin-top: 18px;
+    }
+
+    .footer {
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding: 26px 0 42px;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 880px) {
+      .hero, .steps, .grid-2 { grid-template-columns: 1fr; }
+      .hero { padding-top: 32px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="/">
+        <img src="assets/img/Beagle256.png" alt="Beagle Chat logo" />
+        <span>Beagle Chat</span>
+      </a>
+      <div class="nav-links">
+        <a href="#join">Join Test</a>
+        <a href="#steps">Install Steps</a>
+        <a href="/">Home</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow"><span class="dot"></span>Android closed test is open</div>
+          <h1>Help test Beagle Chat on Android.</h1>
+          <p class="lead">Beagle Chat is an open crypto community app built on Decent Network. We are recruiting early Android testers before the public Play Store release.</p>
+          <div class="actions" id="join">
+            <a class="btn btn-primary" href="mailto:weili@decent.network?subject=Beagle%20Chat%20Android%20Tester&body=Hi%20Wei%2C%0A%0AI%20want%20to%20join%20the%20Beagle%20Chat%20Android%20closed%20test.%0A%0AMy%20Google%20Play%20email%20is%3A%20" >Join as Android tester</a>
+            <a class="btn btn-secondary" href="/assets/beaglechat-release.apk">Download APK</a>
+          </div>
+          <div class="note">Closed testing requires your Google Play email to be added to the tester list. APK download is available for early manual testing.</div>
+        </div>
+
+        <div class="card">
+          <div class="phone">
+            <div class="screen">
+              <div class="screen-top">
+                <div class="avatar"></div>
+                <div>
+                  <div class="screen-title">BTC AI Trader</div>
+                  <div class="screen-sub">Signals in Beagle Chat</div>
+                </div>
+              </div>
+              <div class="bubble signal">BTC LONG signal generated. Watch funding, OI, CVD and liquidation levels.</div>
+              <div class="bubble user">Why long here?</div>
+              <div class="bubble agent">The setup is based on market structure and orderflow. Keep risk small and confirm manually before trading.</div>
+              <div class="bubble agent">Beagle Chat connects communities, agents and users without forcing every application to build its own communication layer.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="steps" id="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Send your Google Play email</h3>
+          <p>Use the same Google account that you use on your Android device. We will add it to the closed testing list.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Install from Play Store</h3>
+          <p>After your email is added, open the tester link on your Android phone and install Beagle Chat from Google Play.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Test and report feedback</h3>
+          <p>Try login, chat, notifications, community rooms and agent signal flows. Send bugs, screenshots and suggestions.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="grid-2">
+          <div class="card">
+            <h2>What to test</h2>
+            <ul class="checklist">
+              <li>Account onboarding and basic profile setup</li>
+              <li>Community chat and direct messaging</li>
+              <li>Push notifications and background behavior</li>
+              <li>BTC AI Trader signal messages, if you are in the crypto test group</li>
+              <li>Stability on your specific Android phone or tablet</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h2>Why it matters</h2>
+            <p>Beagle Chat is a reference application for Decent Network. It shows how open identity, communication, communities and AI agents can work together in a real app.</p>
+            <p>Every tester helps us move from code to a real network with real people.</p>
+            <div class="warning">Do not send private keys, seed phrases or exchange credentials in chat. Trading signals are for discussion and research only; users operate their own accounts manually.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      © Beagle Chat · Built on Decent Network · Early Android closed test
+    </footer>
+  </div>
+</body>
+</html>
